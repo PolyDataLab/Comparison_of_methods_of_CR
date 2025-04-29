@@ -845,8 +845,8 @@ def recall_calculation(top_items, dataTest, item_list, output_path, output_dir):
         print("five cor pred for target basket size of {}: {}".format(x6, count_cor_pred[x6,5]))
         print("six or more cor pred for target basket size of {}: {}".format(x6, count_cor_pred[x6,6]))
     test_rec_info = pd.DataFrame(rec_info, columns=['bsize', 'target_courses', 'rec_courses', 'n_rel_rec', 'recall_score', 'target_semester'])
-    test_rec_info.to_json('/Users/mkhan149/Downloads/Experiments/Others/Association_rules/ARM_test_rec_info_without_summer.json', orient='records', lines=True)
-    test_rec_info.to_csv('/Users/mkhan149/Downloads/Experiments/Others/Association_rules/ARM_test_rec_info_without_summer.csv')
+    test_rec_info.to_json('./Association_rules/ARM_test_rec_info_without_summer.json', orient='records', lines=True)
+    test_rec_info.to_csv('./Association_rules/ARM_test_rec_info_without_summer.csv')
     # count_total_course = {}
     # for keys, values in term_dict.items():
     #     count_course_dict = values
@@ -871,10 +871,10 @@ def recall_calculation(top_items, dataTest, item_list, output_path, output_dir):
     #     count_course_dict = values
     #     count_course_dict = dict(sorted(count_course_dict.items(), key=lambda item: item[1], reverse= True))
     #     term_dict_predicted_false[keys] = count_course_dict
-    # all_data_en_pred = pd.read_json('/Users/mkhan149/Downloads/Experiments/all_data_en_pred_filtered.json', orient='records', lines= True)
+    # all_data_en_pred = pd.read_json('./all_data_en_pred_filtered.json', orient='records', lines= True)
     # term_dict_all, frequency_of_courses, count_course_avg, course_sd_main, course_number_terms = calculate_avg_n_actual_courses(all_data_en_pred, reversed_item_dict)
 
-    # # valid_data_unique = pd.read_json('/Users/mkhan149/Downloads/Experiments/Filtered_data/valid_sample_filtered_unique.json', orient='records', lines= True)
+    # # valid_data_unique = pd.read_json('./Filtered_data/valid_sample_filtered_unique.json', orient='records', lines= True)
     # # term_dict_valid, frequency_of_courses2, count_course_avg2, course_sd_main2, course_number_terms2 = calculate_avg_n_actual_courses(valid_data_unique, reversed_item_dict)
 
     # # avg_mse_for_course_allocation, avg_mse_for_course_allocation_considering_not_predicted_courses = calculate_mse_for_course_allocation(term_dict, term_dict_predicted)
@@ -904,54 +904,35 @@ def recall_calculation(top_items, dataTest, item_list, output_path, output_dir):
     return recall_test, percentage_of_at_least_one_cor_pred
 
 if __name__ == '__main__':
-    #train_data = pd.read_json('/Users/mkhan149/Downloads/Experiments/train_data_all.json', orient='records', lines= True)
+    
     start = time.time()
     print("Start")
-    #train_data = pd.read_json('/Users/mkhan149/Downloads/Experiments/train_data_all_CR.json', orient='records', lines= True)
-    train_data = pd.read_json('/Users/mkhan149/Downloads/Experiments/train_data_all_without_summer.json', orient='records', lines= True)
+    #train_data = pd.read_json('./train_data_all_CR.json', orient='records', lines= True)
     train_data, item_dict, user_dict, reversed_item_dict, reversed_user_dict = preprocess_train_data_part1(train_data)
     train_all, train_set_without_target, target, max_len = preprocess_train_data_part2(train_data) 
-    #print(len(item_dict))
-    #    print(train_all)
-    #    print("max_len:", max_len)
-    #print(target)
-    #valid_data = pd.read_json('/Users/mkhan149/Downloads/Experiments/valid_data_all.json', orient='records', lines= True)
-    # valid_data = pd.read_json('/Users/mkhan149/Downloads/Experiments/Filtered_data/valid_sample_all_CR.json', orient='records', lines= True)
-    valid_data = pd.read_json('/Users/mkhan149/Downloads/Experiments/Filtered_data/valid_sample_all_without_summer.json', orient='records', lines= True)
+   
+    valid_data = pd.read_json('./valid_sample_all_CR.json', orient='records', lines= True)
     valid_data, user_dict2, reversed_user_dict2 = preprocess_valid_data_part1(valid_data, reversed_user_dict, item_dict)
     valid_all, valid_set_without_target, valid_target = preprocess_valid_data_part2(valid_data) #  #, 
-    #print("reversed_user_dict2: ", reversed_user_dict2)
-    #print(valid_all)
-    # test_data = pd.read_json('/Users/mkhan149/Downloads/Experiments/Filtered_data/test_sample_all_CR.json', orient='records', lines= True)
-    test_data = pd.read_json('/Users/mkhan149/Downloads/Experiments/Filtered_data/test_sample_all_without_summer.json', orient='records', lines= True)
+    
+    test_data = pd.read_json('./test_sample_all_CR.json', orient='records', lines= True)
     test_data, user_dict3, reversed_user_dict3 = preprocess_test_data_part1(test_data, reversed_user_dict, item_dict, reversed_user_dict2)
     test_all, test_set_without_target, test_target = preprocess_test_data_part2(test_data) #, item_dict, user_dict, reversed_item_dict, reversed_user_dict #
     print("step 4 done")
-    # offered_courses = offered_course_cal('/Users/mkhan149/Downloads/Experiments/all_data_CR.json')
-    offered_courses = offered_course_cal('/Users/mkhan149/Downloads/Experiments/all_data_without_summer.csv')
+    offered_courses = offered_course_cal('./all_data_CR.json')
 
     print("Step 1 done")
 
     #creating the list of items
     item_list= list(item_dict.keys())
-    # rules = pd.read_csv('/Users/mkhan149/Downloads/Experiments/Others/Association_rules/rules_apriori_v2_sup_0.2.csv')
-    # rules = pd.read_json('/Users/mkhan149/Downloads/Experiments/Others/Association_rules/rules_v7_extended.json', orient="records", lines = True)
-    # rules = pd.read_json('/Users/mkhan149/Downloads/Experiments/Others/Association_rules/rules_v7_extended_15_40.json', orient="records", lines = True)
-    rules = pd.read_json('/Users/mkhan149/Downloads/Experiments/Others/Association_rules/rules_v9_extended_15_40_without_summer.json', orient="records", lines = True)
-    #rules_v9_extended_15_40_without_summer
+    rules = pd.read_json('./Association_rules/rules_v9_extended_15_40.json', orient="records", lines = True)
     #recommending top-k items for the last basket of each user
-    # top_items = recommending_target_courses(A1, R1, 5, u1, k, offered_courses, train_basket, dataTrain, item_list, dataTest, item_dict_all, reversed_item_dict)
     match_thr = 50
     top_items = recommending_target_courses_valid_test(test_set_without_target, test_target, offered_courses, item_list, item_dict, reversed_item_dict, reversed_user_dict3, rules, match_thr)
-    #top_items = recommending_top_k(A1, R1, 5, k, offered_courses, train_basket, dataTrain, item_list)
-    # for i in top_items:
-    #     for x in i:
-    #         print(x," ")
-    #     print("\n")
-    data_dir= '/Users/mkhan149/Downloads/Experiments/Others/Association_rules/'
+    data_dir= './Association_rules/'
     output_dir = data_dir + "/output_dir"
     create_folder(output_dir)
-    output_path= output_dir+ "/prediction_test_extended_prec_rules_v7_extended_15_40_without_summer.txt"
+    output_path= output_dir+ "/prediction_test_extended_prec_rules_v7_extended_15_40.txt"
 
     recall_score, percentage_of_at_least_one_cor_pred = recall_calculation(top_items, test_target, item_list, output_path, output_dir)
     print("test recall@n: ", recall_score)
@@ -960,18 +941,14 @@ if __name__ == '__main__':
     #print("time for recommendation for test data:", end2-end)
 
 
-    #valid_data = pd.read_json('/Users/mkhan149/Downloads/Experiments/valid_data_all.json', orient='records', lines= True)
+    #valid_data = pd.read_json('./valid_data_all.json', orient='records', lines= True)
     # dataValid_prev, dataValid_target, dataValid_Total = preprocess_valid_data(valid_data, item_list5)
 
     #validating with valid data
     #recommending top-k items for the last basket of each user
     top_items2 = recommending_target_courses_valid_test(valid_set_without_target, valid_target, offered_courses, item_list, item_dict, reversed_item_dict, reversed_user_dict2, rules, match_thr)
-    #top_items = recommending_top_k(A1, R1, 5, k, offered_courses, train_basket, dataTrain, item_list)
-    # for i in top_items2:
-    #     for x in i:
-    #         print(x," ")
-    #     print("\n")
-    output_path= output_dir+ "/prediction_valid_extended_prec_rules_v7_extended_15_40_without_summer.txt"
+    
+    output_path= output_dir+ "/prediction_valid_extended_prec_rules_v7_extended_15_40.txt"
     #calculate recall for top-k predicted items
     recall_score, percentage_of_at_least_one_cor_pred = recall_calculation(top_items2, valid_target, item_list, output_path, output_dir)
     print("validation recall@n: ", recall_score)
@@ -979,24 +956,6 @@ if __name__ == '__main__':
     end3 = time.time()
     print("time for recommendation for validation data:", end3-end2)
    
-    # # # test_data = pd.read_json('/Users/mkhan149/Downloads/Experiments/test_data_all.json', orient='records', lines= True)
-    # # # dataTest_prev, dataTest_target, datatest_Total = preprocess_test_data(test_data, item_list5)
-
-    # # #recommending top-k items for the last basket of each user
-    # top_items3 = recommending_target_courses_train(train_set_without_target, target, offered_courses, item_list, item_dict, reversed_item_dict, reversed_user_dict, rules, match_thr)
-    # #top_items = recommending_top_k(A1, R1, 5, k, offered_courses, train_basket, dataTrain, item_list)
-    # # for i in top_items2:
-    # #     for x in i:
-    # #         print(x," ")
-    # #     print("\n")
-    # output_path= output_dir+ "/prediction_train_extended_prec_rules_v7_extended_15_40.txt"
-    # #calculate recall for top-k predicted items
-    # recall_score, percentage_of_at_least_one_cor_pred = recall_calculation_train(top_items3, target, item_list, output_path, output_dir, reversed_item_dict)
-    # print("train recall@n: ", recall_score)
-    # #print("percentage_of_at_least_one_cor_pred: ", percentage_of_at_least_one_cor_pred)
-    # end4 = time.time()
-    # print("time for recommendation for training data:", end4-end3)
-    
     print("minimum support: ", 0.15)
     print("minimum confidence: ", 0.4)
     print("per match_thr: ", 50)
