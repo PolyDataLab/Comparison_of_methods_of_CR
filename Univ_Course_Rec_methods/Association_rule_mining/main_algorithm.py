@@ -63,7 +63,7 @@ def generate_rules(data, reversed_item_dict):
 
 if __name__ == '__main__':
    
-   train_data = pd.read_json('/Users/mkhan149/Downloads/Experiments/train_data_all.json', orient='records', lines= True)
+   train_data = pd.read_json('./train_data_all.json', orient='records', lines= True)
    train_data, item_dict, user_dict, reversed_item_dict, reversed_user_dict = preprocess_train_data_part1(train_data)
    
    train_all, train_set_without_target, target, max_len = preprocess_train_data_part2(train_data)   
