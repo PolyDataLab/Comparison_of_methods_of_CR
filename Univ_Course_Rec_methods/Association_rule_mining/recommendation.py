@@ -16,17 +16,6 @@ from offered_courses import *
 import math
 import time
 
-def course_CIS_dept(basket):
-    list_of_terms = ["CAP", "CDA", "CEN", "CGS", "CIS", "CNT", "COP", "COT", "CTS", "IDC","IDS"]
-    basket1 = []
-    for course in basket:
-        flag = 0
-        for term in list_of_terms:
-            if course.find(term)!= -1:
-                flag = 1
-        if(flag==1):
-            basket1.append(course)
-    return basket1 
 
 def recommending_target_courses_train(data_set_without_target, dataTest, offered_courses, item_list, item_dict, reversed_item_dict, reversed_user_dict, rules, match_thr):
     #top_k= 5
