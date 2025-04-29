@@ -1,0 +1,2 @@
+main_algorithm.py --> a python code to use Apriori algorithm to generate rules. 
+recommendation.py --> a python code to generate recommendations based on high confidence rules. 
