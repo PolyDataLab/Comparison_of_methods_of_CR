@@ -26,25 +26,6 @@ def preprocess_train_data_part1(input_data):
         data['baskets'][index] = new_baskets
         index +=1                
 
-    # itemID_values = data["itemID"].astype('str')
-    # sorting by itemIDs
-    # itemIDs = sorted(set(itemID_values))
-    # print("itemIDs: ", itemIDs)
-    # converting itemIDs into index from 0 to length(item_list)-1
-    # itemIDs = {c: i for (i, c) in enumerate(itemIDs)}
-    # print("itemIDs: ", itemIDs)
-    
-    reversed_item_dict = dict(zip(itemIDs.values(), itemIDs.keys()))
-    # print("reversed_item_dict: ", reversed_item_dict)
-    # data["itemID"] = itemID_values.map(itemIDs).astype('int32')
-
-    # users = sorted(set(data["userID"]))
-
-    # #converting userIDs into index from 0 to length(user_list)-1
-    # users_dict = {c: i for (i, c) in enumerate(users)}
-    # reversed_user_dict = dict(zip(users_dict.values(), users_dict.keys()))
-    # #print("reversed_user_dict: ", reversed_user_dict)
-    # data["userID"] = data["userID"].map(users_dict)
     user_dict = {}
     index = 0
     len1 =0
@@ -98,68 +79,15 @@ def preprocess_train_data_part2(input_data):
     
     target_set = pd.DataFrame(target_set, columns=['userID', 'baskets',  'last_semester'])
    
-    train_set_all.to_json('/Users/mkhan149/Downloads/Experiments/Others/Association_rules/train_sample_all.json', orient='records', lines=True)
-    train_set_without_target.to_json('/Users/mkhan149/Downloads/Experiments/Others/Association_rules/train_set_without_target.json', orient='records', lines=True)
-    target_set.to_json('/Users/mkhan149/Downloads/Experiments/Others/Association_rules/target_set.json', orient='records', lines=True)
+    train_set_all.to_json('./Association_rules/train_sample_all.json', orient='records', lines=True)
+    train_set_without_target.to_json('./Association_rules/train_set_without_target.json', orient='records', lines=True)
+    target_set.to_json('./Association_rules/target_set.json', orient='records', lines=True)
     return train_set_all, train_set_without_target, target_set, max_len
     #return train_set_all, train_set_without_target, target_set, max_len
 
 def preprocess_valid_data_part1(input_data, reversed_user_dict, item_dict): #
     data = input_data
-    # data["userID"] = data["userID"].fillna(-1).astype('int32')
-    # data=data[data["userID"]!=-1].reset_index(drop=True)
-    #itemIDs = {}
-    #user_dict ={}
-    #item_dict = {}
-    index=0
-    # for baskets in data['baskets']:
-    #     new_baskets = []
-    #     for basket in baskets:
-    #         new_basket = []
-    #         for item in basket:
-    #             if item in item_dict:
-    #                 #item_dict[item] = len(item_dict)
-    #                 new_basket.append(item_dict[item])
-    #         if(len(new_basket)>0):
-    #             new_baskets.append(new_basket)
-    #     data['baskets'][index] = new_baskets
-    #     data['num_baskets'][index] = len(new_baskets)
-    #     index +=1    
-
-    #itemIDs = {c: i for (i, c) in enumerate(itemIDs)}
-    #print("itemIDs: ", itemIDs)
-    #reversed_item_dict = dict(zip(item_dict.values(), item_dict.keys()))
-    #print("reversed_item_dict: ", reversed_item_dict)
-    #data["itemID"] = itemID_values.map(itemIDs).astype('int32')
-
-    # users = sorted(set(data["userID"]))
-    # #converting userIDs into index from 0 to length(user_list)-1
-    # #users = {c: i for (i, c) in enumerate(users)}
-    # index = 0
-    # for user in data["userID"]:
-    #     if user not in user_dict:
-    #         user_dict[user] = len(user_dict)
-    #     data['userID'][index] = user_dict[user]
-    #     index += 1
-    # reversed_user_dict = dict(zip(user_dict.values(), user_dict.keys()))
-    # freq_users = {}
-    # user_dict2 = {}
-    # index = 0
-    # reversed_user_dict2 = {}
-    # for user in data.userID.values:
-    #     if user not in freq_users:
-    #         freq_users[user] = 1
-    #         data['userID'][index] = user
-    #         user_dict2[user] = user
-    #         reversed_user_dict2[user]= user
-    #     elif user in freq_users:
-    #         freq_users[user] += 1
-    #         data['userID'][index] = user*freq_users[user]*100
-    #         user_dict2[user] = user*freq_users[user]*100
-    #         reversed_user_dict2[user_dict2[user]]= user
-    #     index += 1
-    #print(data)
-    #reversed_user_dict = dict(zip(user_dict.values(), user_dict.keys()))
+   
     len1 = len(reversed_user_dict)
     user_dict2 = {}
     index = 0
@@ -170,12 +98,6 @@ def preprocess_valid_data_part1(input_data, reversed_user_dict, item_dict): #
         index += 1
         len1+=1
         reversed_user_dict2[user_dict2[user]]= user
-    # reversed_user_dict2 = dict(zip(user_dict2.values(), user_dict2.keys()))
-
-
-    #reversed_user_dict2 = dict(zip(user_dict2.values(), user_dict2.keys()))
-    #print("reversed_user_dict: ", reversed_user_dict)
-    #data["userID"] = data["userID"].map(users)
 
     return data, user_dict2, reversed_user_dict2
 
@@ -220,68 +142,15 @@ def preprocess_valid_data_part2(input_data):
         index += 1
     validation_target_set = pd.DataFrame(validation_target_set, columns=['userID', 'baskets',  'last_semester'])
     
-    valid_set_all.to_json('/Users/mkhan149/Downloads/Experiments/Others/Association_rules/valid_sample_all.json', orient='records', lines=True)
-    valid_set_without_target.to_json('/Users/mkhan149/Downloads/Experiments/Others/Association_rules/valid_sample_without_target.json', orient='records', lines=True)
-    validation_target_set.to_json('/Users/mkhan149/Downloads/Experiments/Others/Association_rules/validation_target_set.json', orient='records', lines=True)
+    valid_set_all.to_json('./Association_rules/valid_sample_all.json', orient='records', lines=True)
+    valid_set_without_target.to_json('./Association_rules/valid_sample_without_target.json', orient='records', lines=True)
+    validation_target_set.to_json('./Association_rules/validation_target_set.json', orient='records', lines=True)
     return valid_set_all, valid_set_without_target, validation_target_set
     #return valid_set_all, valid_set_without_target, validation_target_set
 
 def preprocess_test_data_part1(input_data, reversed_user_dict, item_dict, reversed_user_dict2): #  
   
     data = input_data
-    #user_dict ={}
-    #item_dict = {}
-    # data["userID"] = data["userID"].fillna(-1).astype('int32')
-    # data=data[data["userID"]!=-1].reset_index(drop=True)
-    #itemIDs = {}
-    # index=0
-    # for baskets in data['baskets']:
-    #     new_baskets = []
-    #     for basket in baskets:
-    #         new_basket = []
-    #         for item in basket:
-    #             if item in item_dict:
-    #                 #item_dict[item] = len(item_dict)
-    #                 new_basket.append(item_dict[item])
-    #         if(len(new_basket)>0):
-    #             new_baskets.append(new_basket)
-    #     data['baskets'][index] = new_baskets
-    #     data['num_baskets'][index] = len(new_baskets)
-    #     index +=1    
-    #itemIDs = {c: i for (i, c) in enumerate(itemIDs)}
-    #print("itemIDs: ", itemIDs)
-    #reversed_item_dict = dict(zip(item_dict.values(), item_dict.keys()))
-    #print("reversed_item_dict: ", reversed_item_dict)
-    #data["itemID"] = itemID_values.map(itemIDs).astype('int32')
-
-    # users = sorted(set(data["userID"]))
-    # #converting userIDs into index from 0 to length(user_list)-1
-    # #users = {c: i for (i, c) in enumerate(users)}
-    # index = 0
-    # for user in data["userID"]:
-    #     if user not in user_dict:
-    #         user_dict[user] = len(user_dict)
-    #     data['userID'][index] = user_dict[user]
-    #     index += 1
-    # reversed_user_dict = dict(zip(user_dict.values(), user_dict.keys()))
-    # freq_users = {}
-    # user_dict3 = {}
-    # reversed_user_dict3 = {}
-    # index = 0
-    # #handling the same user id for multiple instances
-    # for user in data["userID"]:
-    #     if user not in freq_users:
-    #         freq_users[user] = 1
-    #         user_dict3[user] = user
-    #         reversed_user_dict3[user_dict3[user]]= user
-    #     else:
-    #         freq_users[user] += 1
-    #         data['userID'][index] = user*freq_users[user]*100
-    #         user_dict3[user] = user*freq_users[user]*100
-    #         reversed_user_dict3[user_dict3[user]]= user
-    #     index += 1
-
-    #reversed_user_dict = dict(zip(user_dict.values(), user_dict.keys()))
     len1 = len(reversed_user_dict) + len(reversed_user_dict2)
     user_dict3 = {}
     index = 0
@@ -292,13 +161,6 @@ def preprocess_test_data_part1(input_data, reversed_user_dict, item_dict, revers
         index += 1
         len1+=1
         reversed_user_dict3[user_dict3[user]]= user
-
-    #reversed_user_dict3 = dict(zip(user_dict3.values(), user_dict3.keys()))
-    # baskets = data.groupby(['userID', 'timestamp'])['itemID'].apply(list).reset_index()
-    # baskets = baskets.groupby(['userID'])['itemID'].apply(list).reset_index()  #
-    # baskets.columns = ['userID', 'baskets']
-
-    #baskets['num_baskets'] = baskets.baskets.apply(len)
 
     return data, user_dict3, reversed_user_dict3
 
@@ -342,31 +204,23 @@ def preprocess_test_data_part2(input_data):
         index +=1
     test_target_set = pd.DataFrame(test_target_set, columns=['userID', 'baskets', 'last_semester'])
    
-    test_set_all.to_json('/Users/mkhan149/Downloads/Experiments/Others/Association_rules/test_sample_all.json', orient='records', lines=True)
-    test_set_without_target.to_json('/Users/mkhan149/Downloads/Experiments/Others/Association_rules/test_sample_without_target.json', orient='records', lines=True)
-    test_target_set.to_json('/Users/mkhan149/Downloads/Experiments/Others/Association_rules/test_target_set.json', orient='records', lines=True)
+    test_set_all.to_json('./Association_rules/test_sample_all.json', orient='records', lines=True)
+    test_set_without_target.to_json('./Association_rules/test_sample_without_target.json', orient='records', lines=True)
+    test_target_set.to_json('./Association_rules/test_target_set.json', orient='records', lines=True)
     return test_set_all, test_set_without_target, test_target_set
     #return test_set_all, test_set_without_target, test_target_set
 
 if __name__ == '__main__':
-   #train, test, valid = split_data('/Users/mkhan149/Downloads/Experiments/Others/Association_rules_2/train_sample.csv')
-#    train_data = pd.read_json('/Users/mkhan149/Downloads/Experiments/Filtered_data/train_sample_augmented.json', orient='records', lines= True)
-#    train_data = pd.read_json('/Users/mkhan149/Downloads/Experiments/train_data_all_CR.json', orient='records', lines= True)
-   train_data = pd.read_json('/Users/mkhan149/Downloads/Experiments/train_data_all_without_summer.json', orient='records', lines= True)
+   train_data = pd.read_json('./train_data_all_CR.json', orient='records', lines= True)
+   
    train_data, item_dict, user_dict, reversed_item_dict, reversed_user_dict = preprocess_train_data_part1(train_data)
    train_all, train_set_without_target, target, max_len = preprocess_train_data_part2(train_data) 
-   #print(len(item_dict))
-#    print(train_all)
-#    print("max_len:", max_len)
-   #print(target)
-   #valid_data = pd.read_json('/Users/mkhan149/Downloads/Experiments/valid_data_all.json', orient='records', lines= True)
-#    valid_data = pd.read_json('/Users/mkhan149/Downloads/Experiments/Filtered_data/valid_sample_all_CR.json', orient='records', lines= True)
-   valid_data = pd.read_json('/Users/mkhan149/Downloads/Experiments/Filtered_data/valid_sample_all_without_summer.json', orient='records', lines= True)
+   
+   valid_data = pd.read_json('./valid_sample_all_CR.json', orient='records', lines= True)
    valid_data, user_dict2, reversed_user_dict2 = preprocess_valid_data_part1(valid_data, reversed_user_dict, item_dict)
    valid_all, valid_set_without_target, valid_target = preprocess_valid_data_part2(valid_data) #  #, 
-   #print("reversed_user_dict2: ", reversed_user_dict2)
-   #print(valid_all)
-   test_data = pd.read_json('/Users/mkhan149/Downloads/Experiments/Filtered_data/test_sample_all_without_summer.json', orient='records', lines= True)
+   
+   test_data = pd.read_json('./test_sample_all_CR.json', orient='records', lines= True)
    test_data, user_dict3, reversed_user_dict3 = preprocess_test_data_part1(test_data, reversed_user_dict, item_dict, reversed_user_dict2)
    test_all, test_set_without_target, test_target = preprocess_test_data_part2(test_data) #, item_dict, user_dict, reversed_item_dict, reversed_user_dict #, 
    print(len(item_dict))
