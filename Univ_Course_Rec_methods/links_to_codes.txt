@@ -1,0 +1,3 @@
+The implememntation of Course2Vec and PlanBERT model can be found here: 
+The implementation of 2 sequential models (CourseDREAM and Scholars Walk) can be found here: https://github.com/PolyDataLab/SessionBasedCourseRecommendation/tree/main
+

@@ -1,1 +1,0 @@
-The implementation of 4 sequential models (CourseDREAM, CourseBEACON, Scholars Walk, and LSTM) can be found here: https://github.com/PolyDataLab/SessionBasedCourseRecommendation/tree/main
