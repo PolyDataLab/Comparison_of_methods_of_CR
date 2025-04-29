@@ -211,16 +211,16 @@ def preprocess_test_data_part2(input_data):
     #return test_set_all, test_set_without_target, test_target_set
 
 if __name__ == '__main__':
-   train_data = pd.read_json('./train_data_all_CR.json', orient='records', lines= True)
+   train_data = pd.read_json('./train_data_all.json', orient='records', lines= True)
    
    train_data, item_dict, user_dict, reversed_item_dict, reversed_user_dict = preprocess_train_data_part1(train_data)
    train_all, train_set_without_target, target, max_len = preprocess_train_data_part2(train_data) 
    
-   valid_data = pd.read_json('./valid_sample_all_CR.json', orient='records', lines= True)
+   valid_data = pd.read_json('./valid_sample_all.json', orient='records', lines= True)
    valid_data, user_dict2, reversed_user_dict2 = preprocess_valid_data_part1(valid_data, reversed_user_dict, item_dict)
    valid_all, valid_set_without_target, valid_target = preprocess_valid_data_part2(valid_data) #  #, 
    
-   test_data = pd.read_json('./test_sample_all_CR.json', orient='records', lines= True)
+   test_data = pd.read_json('./test_sample_all.json', orient='records', lines= True)
    test_data, user_dict3, reversed_user_dict3 = preprocess_test_data_part1(test_data, reversed_user_dict, item_dict, reversed_user_dict2)
    test_all, test_set_without_target, test_target = preprocess_test_data_part2(test_data) #, item_dict, user_dict, reversed_item_dict, reversed_user_dict #, 
    print(len(item_dict))
