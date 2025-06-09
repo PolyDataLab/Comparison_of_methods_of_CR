@@ -1,19 +1,28 @@
-The best configuration of hyperparameters for our proposed KGXCR model:
-for GAT module: number of GAT layers = 1, embedding dimension = 128, number of epochs = 400, learning rate = 0.001, number of heads = 4, edge dropout = 0, node dropout = 0, threshold_weight_edges_iw (course-keyword) = 0.1, threshold_weight_edges_cc (course-course) = 0.2,
-for GRU module: number of GRU layers = 3, dropout = 0.5, learning rate = 0.01. 
+For the University dataset: 
+  The best configuration of hyperparameters for the CourseDREAM model:
+  number of LSTM layers = 3, embedding dimension = 64, dropout = 0.4, learning rate = 0.01, number of epochs = 10.
 
-The best configuration of hyperparameters for the LightGCN+GRU model:
-for LightGCN module: number of LightGCN layers = 3, embedding dimension = 64, number of epochs = 300, learning rate = 0.001, edge dropout = 0, node dropout = 0, threshold_weight_edges_iw (course-keyword) = 0.1, threshold_weight_edges_cc (course-course) = 0.2
-For GRU module: number of GRU layers = 1, dropout = 0.4, learning rate = 0.01. 
+  The best configuration of hyperparameters for the ScholarsWalk model:
+  previous course to start a random walk = any of the last semester's courses taken by that student.
 
-The best configuration of hyperparameters for the CourseDREAM model:
-number of LSTM layers = 3, embedding dimension = 64, dropout = 0.4, learning rate = 0.01, number of epochs = 10.
+  The best configuration of hyperparameters for the PlanBERT model:
+  percentage of masked tokens = 25%.
 
-The best configuration of hyperparameters for the UPGPR model:
-maximum path length = 7, embedding dimension = 64, number of hidden units= 128, 64, number of epochs = 100.
+  The best configuration of hyperparameters for the matrix factorization models:
+  NMF model --> latent dimension = 15, number of epochs = 10
+  PMF model --> latent dimension = 20, number of epochs = 15
+  LightFM+BPR model --> latent dimension (factors) = 10, number of epochs = 20
+  LightFM+WARP model --> latent dimension = 10, number of epochs = 30
 
-The best configuration of hyperparameters for the MMNR model:
-decay = 0.6, embedding dimension = 96,number of epochs = 100, batch size = 32. 
+  The best configuration of hyperparameters for the KEAM model:
+  number of neighbors = 200.
 
-The best configuration of hyperparameters for the GenRec model:
-number of attention layers = 2, embedding dimension = 64, dropout = 0.5, learning rate = 0.001, number of heads = 4, number of epochs = 10.
+  The best configuration of hyperparameters for the UPGPR model:
+  maximum path length = 7, embedding dimension = 64, number of hidden units= 128, 64, number of epochs = 100.
+
+For the MOOCCube dataset: 
+
+
+For the CNPC dataset: 
+
+  
