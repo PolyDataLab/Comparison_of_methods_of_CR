@@ -11,5 +11,5 @@ Univ_course_recommendation_methods --> This folder includes all the code or link
 
 data_preprocessing.txt --> This file contains how we preprocess the datasets (textual descriptions). 
 
-best_hyperparameters.txt --> This file contains the best-performing hyperparameter sets for different models on different datasets. 
+hyperparameter_sets.txt --> This file contains the best-performing hyperparameter sets for different models on different datasets. 
 
