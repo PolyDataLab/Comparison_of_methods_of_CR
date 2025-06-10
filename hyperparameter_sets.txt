@@ -1,68 +1,45 @@
-For the University dataset: 
-  The best configuration of hyperparameters for the CourseDREAM model:
-  number of LSTM layers = 3, embedding dimension = 64, dropout = 0.4, learning rate = 0.01, number of epochs = 10.
+The best configuration of hyperparameters for the CourseDREAM model:
+  University dataset: number of LSTM layers = 3, embedding dimension = 64, dropout = 0.4, learning rate = 0.01, number of epochs = 10.
+  MOOCCube dataset: number of LSTM layers = 2, embedding dimension = 64, dropout = 0.3, learning rate = 0.01, number of epochs = 10.
+  CNPC dataset: number of LSTM layers = 2, embedding dimension = 128, dropout = 0.3, learning rate = 0.001, number of epochs = 10.
 
-  The best configuration of hyperparameters for the ScholarsWalk model:
-  previous course to start a random walk = any of the last semester's courses taken by that student before the target semester.
+The best configuration of hyperparameters for the ScholarsWalk model:
+  University: previous course to start a random walk = any of the last semester's courses taken by that student before the target semester.
+  MOOCCube: previous course to start a random walk = the last 8 courses taken by the target student.
+  CNPC: previous course to start a random walk = the last 3 courses taken by the target student.
 
-  The best configuration of hyperparameters for the PlanBERT model:
-  percentage of masked tokens = 25%.
+The best configuration of hyperparameters for the PlanBERT model:
+  University: percentage of masked tokens = 25%.
+  MOOCCube: percentage of masked tokens = 25%.
+  CNPC: percentage of masked tokens = 30%.
 
-  The best configuration of hyperparameters for the matrix factorization models:
-  NMF model --> latent dimension (factors) = 15, number of epochs = 10
-  PMF model --> latent dimension = 20, number of epochs = 15
-  LightFM+BPR model --> latent dimension = 10, number of epochs = 20
-  LightFM+WARP model --> latent dimension = 10, number of epochs = 30
+The best configuration of hyperparameters for the matrix factorization (MF) models:
+  Non-negative MF model:
+    University: latent dimension (factors) = 15, number of epochs = 10
+    MOOCCube: latent dimension = 30, number of epochs = 10
+    CNPC: latent dimension = 30, number of epochs = 10
 
-  The best configuration of hyperparameters for the KEAM model:
-  number of neighbors = 200.
+  Probabilistic MF model:
+    University: latent dimension = 20, number of epochs = 15
+    MOOCCube: latent dimension = 30, number of epochs = 15
+    CNPC: latent dimension = 30, number of epochs = 15
 
-  The best configuration of hyperparameters for the UPGPR model:
-  maximum path length = 7, embedding dimension = 64, number of hidden units= 128, 64, number of epochs = 100.
+  LightFM+BPR model:
+    University: latent dimension = 10, number of epochs = 20
+    MOOCCube: latent dimension = 10, number of epochs = 20
+    CNPC: latent dimension = 10, number of epochs = 30
+   
+  LightFM+WARP model:
+    University: latent dimension = 10, number of epochs = 30
+    MOOCCube: latent dimension = 10, number of epochs = 30
+    CNPC: latent dimension = 10, number of epochs = 40
 
-For the MOOCCube dataset:
-  The best configuration of hyperparameters for the CourseDREAM model:
-  number of LSTM layers = 2, embedding dimension = 64, dropout = 0.3, learning rate = 0.01, number of epochs = 10.
+The best configuration of hyperparameters for the KEAM model:
+  University: number of neighbors = 200.
+  MOOCCube: number of neighbors = 190.
+  CNPC: number of neighbors = 100.
 
-  The best configuration of hyperparameters for the ScholarsWalk model:
-  previous course to start a random walk = the last 8 courses taken by the target student.
-
-  The best configuration of hyperparameters for the PlanBERT model:
-  percentage of masked tokens = 25%.
-
-  The best configuration of hyperparameters for the matrix factorization models:
-  NMF model --> latent dimension = 30, number of epochs = 10
-  PMF model --> latent dimension = 30, number of epochs = 15
-  LightFM+BPR model --> latent dimension = 10, number of epochs = 20
-  LightFM+WARP model --> latent dimension = 10, number of epochs = 30
-
-  The best configuration of hyperparameters for the KEAM model:
-  number of neighbors = 190.
-
-  The best configuration of hyperparameters for the UPGPR model:
-  maximum path length = 5, embedding dimension = 64, number of hidden units= 128, 64, number of epochs = 50.
-
-
-For the CNPC dataset: 
-  The best configuration of hyperparameters for the CourseDREAM model:
-  number of LSTM layers = 2, embedding dimension = 128, dropout = 0.3, learning rate = 0.001, number of epochs = 10.
-
-  The best configuration of hyperparameters for the ScholarsWalk model:
-  previous course to start a random walk = the last 3 courses taken by the target student.
-
-  The best configuration of hyperparameters for the PlanBERT model:
-  percentage of masked tokens = 30%.
-
-  The best configuration of hyperparameters for the matrix factorization models:
-  NMF model --> latent dimension = 30, number of epochs = 10
-  PMF model --> latent dimension = 30, number of epochs = 15
-  LightFM+BPR model --> latent dimension = 10, number of epochs = 30
-  LightFM+WARP model --> latent dimension = 10, number of epochs = 40
-
-  The best configuration of hyperparameters for the KEAM model:
-  number of neighbors = 100.
-
-  The best configuration of hyperparameters for the UPGPR model:
-  maximum path length = 5, embedding dimension = 64, number of hidden units= 128, 64, number of epochs = 100.
-
-  
+The best configuration of hyperparameters for the UPGPR model:
+  University: maximum path length = 7, embedding dimension = 64, number of hidden units = 128, 64, number of epochs = 100.
+  MOOCCube: maximum path length = 5, embedding dimension = 64, number of hidden units = 128, 64, number of epochs = 50.
+  CNPC: maximum path length = 5, embedding dimension = 64, number of hidden units = 128, 64, number of epochs = 100.
