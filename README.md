@@ -3,7 +3,7 @@ This repository contains methods or GitHub links for the models that are develop
 
 Description of folders:
 
-Dataset --> It consists of three datasets, including a link to publicly accessible datasets, train and test sets, and course information.
+Dataset --> It consists of three datasets, including links to publicly accessible datasets, train and test sets, and course information.
 
 MOOCs_recommendation_methods --> This folder includes all the code or links to implement the course recommendation methods proposed for MOOCs.
 
