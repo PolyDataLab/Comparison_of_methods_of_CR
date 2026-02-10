@@ -1,0 +1,3 @@
+We have student-course interactions over semesters and course descriptions for our university dataset.  Some of the methods developed for MOOCs also use concepts. So, we need to generate some keywords for each course based on the course descriptions. So, after preprocessing, we use a chatbot of a large language model (GPT4o\footnote{{https://openai.com/index/hello-gpt-4o/}}) to extract 5-10 meaningful course concepts by providing course names and descriptions. We use the following prompt: 
+
+``Assume that you are a concept extractor from the textual data. You are given the course code, course name, and course description. Your task is to extract a list of 5 to 10 concepts for each course from the course descriptions and your knowledge base.''
