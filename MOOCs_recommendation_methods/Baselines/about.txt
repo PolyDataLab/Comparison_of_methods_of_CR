@@ -8,6 +8,6 @@ This folder contains the python implementation of the following baselines for co
 
 (iv) Probabilistic Matrix Factorization (PMF)
 
-(v) LightFM-BPR
+(v) LightFM+BPR
 
-(vi) LightFM-WARP
+(vi) LightFM+WARP
