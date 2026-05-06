@@ -1,0 +1,4 @@
+Here, you will find the implementation of ScholarsWalk model for course recommendation collected from this link: https://github.com/PolyDataLab/SessionBasedCourseRecommendation/tree/main/Competing_Approaches/ScholarsWalk
+Explanation of each Notebook file:
+
+scholar's_walk.ipynb--> functions to build ScholarsWalk model, calculate recall score for all courses (step by step in different cells). 
