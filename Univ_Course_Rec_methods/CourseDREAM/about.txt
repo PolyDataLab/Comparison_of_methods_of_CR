@@ -1,0 +1,12 @@
+Here, you will find the implementation of CourseDREAM model for course recommendation. 
+Explanation of each Python file:
+
+config.py --> set the parameters
+preprocess.py --> preprocess the training, validation, and test data.
+offered_courses.py --> Calculate the offered course list for each semester from all the data. 
+utils.py --> post-processing function to filter out if a course is not offered in the target semester or if a student took a course in prior semesters to recommend new courses.
+data_helpers.py --> some necessary functions for logging information, loading data, and creating batches for training. 
+rnn_model.py --> Define CourseDREAM model and feed forward function to calculate output from RNN where we use LSTM layers.
+train.py --> functions to train and validate the model, compute loss and calculate recall score.
+validate.py --> define functions to validate the model and calculate recall score for all instances in the target semesters of the validation set.
+test.py --> define functions to test the model and calculate recall score for for all instances in the target semesters of the test set. 
