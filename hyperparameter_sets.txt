@@ -1,17 +1,25 @@
+The best configuration of hyperparameters for the GGCR model:
+  (i) University dataset: GAT module- number of attention layers = 1, number of attention heads = 4, embedding dimensions = 64, edge dropout = 0.2, node dropout = 0.2, learning rate = 0.01, number of epochs = 400,
+                      GRU module- number of GRU layers = 1, embedding dimension = 64 (same as GAT module), dropout = 0.4, learning rate = 0.01, number of epochs = 10.
+  (ii) MOOCCube dataset: GAT module- number of attention layers = 1, number of attention heads = 1, embedding dimensions = 32, edge dropout = 0.2, node dropout = 0, learning rate = 0.01, number of epochs = 100,
+                      GRU module- number of GRU layers = 1, embedding dimension = 32 (same as GAT module), dropout = 0.5, learning rate = 0.01, number of epochs = 10.
+ (iii) CNPC dataset: GAT module- number of attention layers = 1, number of attention heads = 2, embedding dimensions = 32, edge dropout = 0, node dropout = 0.2, learning rate = 0.01, number of epochs = 300,
+                GRU module- number of GRU layers = 1, embedding dimension = 32 (same as GAT module), dropout = 0.4, learning rate = 0.01, number of epochs = 10.
+
 The best configuration of hyperparameters for the CourseDREAM model:
-  University dataset: number of LSTM layers = 3, embedding dimension = 64, dropout = 0.4, learning rate = 0.01, number of epochs = 10.
-  MOOCCube dataset: number of LSTM layers = 2, embedding dimension = 64, dropout = 0.3, learning rate = 0.01, number of epochs = 10.
-  CNPC dataset: number of LSTM layers = 2, embedding dimension = 128, dropout = 0.3, learning rate = 0.001, number of epochs = 10.
+  (i) University dataset: number of LSTM layers = 3, embedding dimension = 64, dropout = 0.4, learning rate = 0.01, number of epochs = 10.
+  (ii) MOOCCube dataset: number of LSTM layers = 2, embedding dimension = 64, dropout = 0.3, learning rate = 0.01, number of epochs = 10.
+  (iii) CNPC dataset: number of LSTM layers = 2, embedding dimension = 128, dropout = 0.3, learning rate = 0.001, number of epochs = 10.
 
 The best configuration of hyperparameters for the ScholarsWalk model:
-  University: previous course to start a random walk = any of the last semester's courses taken by that student before the target semester.
-  MOOCCube: previous course to start a random walk = the last 8 courses taken by the target student.
-  CNPC: previous course to start a random walk = the last 3 courses taken by the target student.
+ (i) University: previous course to start a random walk = any of the last semester's courses taken by that student before the target semester.
+ (ii) MOOCCube: previous course to start a random walk = the last 8 courses taken by the target student.
+ (iii) CNPC: previous course to start a random walk = the last 3 courses taken by the target student.
 
 The best configuration of hyperparameters for the PlanBERT model:
-  University: percentage of masked tokens = 25%.
-  MOOCCube: percentage of masked tokens = 25%.
-  CNPC: percentage of masked tokens = 30%.
+ (i) University: percentage of masked tokens = 25%.
+ (ii) MOOCCube: percentage of masked tokens = 25%.
+ (iii) CNPC: percentage of masked tokens = 30%.
 
 The best configuration of hyperparameters for the matrix factorization (MF) models:
   Non-negative MF model:
