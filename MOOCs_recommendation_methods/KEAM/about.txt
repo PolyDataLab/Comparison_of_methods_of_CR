@@ -1,1 +1,17 @@
 This folder contains all the codes to implement the KEAM model.
+
+We should run the codes in the following order:
+
+getKG.py --> construct a knowledge graph 
+
+matrix.py --> get the matrix from the knowledge graph of student-course interaction
+
+autoencoder.py --> autoencoder model on the knowledge graph to create user (student) profiles based on course concepts. 
+
+getSentencesWeighted.py --> get all the sentences weighted to create complete user profiles. 
+
+Word2vecWeighted.py --> Construct a vector for each user profile based on words (course concepts) and weights. 
+
+vsm.py --> use cosine similarity to match similar users and recommend the courses taken by the most similar users to the current user.
+
+evaluate.py --> evaluate the recommendation quality using different metrics. 
