@@ -1,5 +1,6 @@
 # Comparison_of_methods_of_CR
-This repository contains methods or GitHub links for the models that are developed for course recommendation in university and MOOC platforms. We also provide the links for publicly accessible MOOC datasets. 
+This repository contains methods or GitHub links for the models that are developed for course recommendation in university and MOOC platforms. 
+For implementing most of the methods, we use the authors’ original publicly available repositories, which we list in link to files in the MOOCs_recommendation_methods and Univ_course_recommendation_methods folders. We also provide the links for publicly accessible MOOC datasets and train and test sets. 
 
 Description of folders:
 
