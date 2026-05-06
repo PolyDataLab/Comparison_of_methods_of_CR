@@ -2,9 +2,11 @@ This folder contains all the codes to implement the KEAM model.
 
 We should run the codes in the following order:
 
-getKG.py --> construct a knowledge graph 
+dataprocess.py --> preprocess the data.
 
-matrix.py --> get the matrix from the knowledge graph of student-course interaction
+getKG.py --> construct a knowledge graph.
+
+matrix.py --> get the matrix from the knowledge graph of student-course interaction.
 
 autoencoder.py --> autoencoder model on the knowledge graph to create user (student) profiles based on course concepts. 
 
